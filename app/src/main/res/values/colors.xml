@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="reveal_color">#1b000000</color>
+    <color name="white">#ffffff</color>
+    <color name="light_white">#daebf7</color>
+    <color name="primary_text">#222222</color>
+    <color name="secondary_text">#bbbbbb</color>
+    <color name="divider_color">#B6B6B6</color>
+    <color name="toolbar_item_color">#ccd4d8</color>
+
+    <color name="primary_color">#61a6d6</color>
+    <color name="primary_dark_color">#4290c6</color>
+    <color name="accent_color">#ff9182</color>
+
+    <color name="background_grey">#EFEFF4</color>
+
+    <color name="background_grey_light">#F8F8F8</color>
+
+    <color name="item_now_red">#C12828</color>
+
+    <color name="item_now_green">#0FB360</color>
+
+
+
+
+
+</resources>

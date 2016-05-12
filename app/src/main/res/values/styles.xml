@@ -1,0 +1,38 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <!-- Customize your theme here. -->
+        <item name="windowActionModeOverlay">true</item>//设置Actionbar占据Toolbar
+    </style>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- Actionbar color -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <!--Status bar color-->
+        <item name="colorPrimaryDark">@color/primary_color</item>
+        <!--Window color-->
+        <item name="android:windowBackground">@color/background_material_light</item>
+        <item name="colorAccent">@color/primary_color</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <!-- 这是EditText的主题
+
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:theme="@style/EditTheme" />
+
+   -->
+    <style name="EditTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/primary_color</item>
+        <item name="colorControlNormal">@color/secondary_text</item>
+    </style>
+
+
+
+
+</resources>

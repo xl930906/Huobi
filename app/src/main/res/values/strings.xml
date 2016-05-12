@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">火币小助手</string>
+
+    <!-- 主界面 -->
+    <string name="main_buy">买入</string>
+    <string name="main_sale">卖出</string>
+    <string name="main_now">当前委托</string>
+    <string name="main_history">历史委托</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="update">检查更新</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- 当前委托 -->
+
+    <string name="WeiTuoAmount">委托量</string>
+    <string name="StopLossPrice">止损价格</string>
+    <string name="WaitBuy">等待买入</string>
+    <string name="WaitSale">等待卖出</string>
+    <string name="StopWinPrice">止盈价格</string>
+    <string name="Entrust_type">委托类型</string>
+    <string name="win_type">成交类型</string>
+    <string name="buy_avg_price">买入均价</string>
+    <string name="buy_time">买入时间</string>
+    <string name="win_price">预盈金额</string>
+    <string name="loss_price">预损金额</string>
+    <string name="change_win_price">修改止盈</string>
+    <string name="change_loss_price">修改止损</string>
+    <string name="knockdown_type">成交类型</string>
+    <string name="win_or_loss">本单盈亏</string>
+</resources>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_grey"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_history"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="32dp"
+            />
+
+        <TextView
+            android:id="@+id/item_history_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:text="04-05 13:53"
+            android:textColor="@color/secondary_text"
+            android:layout_weight="6"
+            />
+        <TextView
+            android:id="@+id/item_history_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="已成交"
+            android:textColor="@color/item_now_red"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/background_grey_light">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/StopWinPrice"
+                    android:textColor="#82858b" />
+
+                <TextView
+                    android:id="@+id/history_stop_win"
+                    android:textSize="15sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="2700.0"
+                    android:textColor="@color/primary_text" />
+
+
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/sale_Layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/WeiTuoAmount"
+                    android:textColor="#82858b" />
+
+                <TextView
+                    android:id="@+id/item_history_entrust_number"
+                    android:textSize="15sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="0.1165"
+                    android:textColor="@color/primary_text" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/now_Layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/StopLossPrice"
+                android:textColor="#82858b" />
+
+            <TextView
+                android:id="@+id/item_history_entrust_loss"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="0.1165"
+                android:textColor="@color/primary_text" />
+        </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout
+
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+
+                android:id="@+id/item_history_avg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/item_history_avg_pricel"
+                android:textSize="15sp"
+                android:text="均价"
+                android:layout_marginRight="16dp"
+                android:textColor="@color/primary_color"
+                />
+
+            <TextView
+                android:id="@+id/item_history_avg_pricel"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:textSize="15sp"
+                android:text="￥2.222"
+                android:textColor="@color/primary_color"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</LinearLayout>

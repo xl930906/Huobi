@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_start_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="开启服务" />
+
+            <Button
+                android:id="@+id/btn_close_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="关闭服务" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获取当前价格请开启服务"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="交易：（委托价,止盈,止损,购买金额。注意：委托价为0时，为市价交易）"
+                    android:textColor="#333"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/et_buy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="按照以上格式填写交易信息"
+                    android:text="0,2787,2784,1"
+                    android:textColorHint="#777" />
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="提交" />
+
+                <Button
+                    android:id="@+id/btn_get_all_entrust"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="获取当前委托列表" />
+
+                <Button
+                    android:id="@+id/btn_clear_all_entrust"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="清除所有委托" />
+
+                <TextView
+                    android:id="@+id/tv_all_entrust"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="所有委托"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
