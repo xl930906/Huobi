@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_market"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <EditText
+        android:id="@+id/et_buy_price"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="买入金额($)"
+        android:textCursorDrawable="@color/colorOrange"
+        android:layout_marginBottom="20dp"
+        android:textColorHint="@color/colorGray"
+        android:background="@drawable/show_data"
+        />
+    <TextView
+        android:id="@+id/market_amt"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@null"
+        android:cursorVisible="false"
+        android:hint="交易额(￥)"
+        android:textColorHint="@color/colorGray" />
+
+</LinearLayout>

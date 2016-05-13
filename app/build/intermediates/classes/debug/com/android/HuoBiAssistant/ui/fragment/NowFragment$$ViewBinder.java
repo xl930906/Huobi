@@ -8,10 +8,10 @@ import butterknife.ButterKnife.ViewBinder;
 public class NowFragment$$ViewBinder<T extends com.android.HuoBiAssistant.ui.fragment.NowFragment> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131492965, "field 'now_rv'");
-    target.now_rv = finder.castView(view, 2131492965, "field 'now_rv'");
-    view = finder.findRequiredView(source, 2131492964, "field 'swipe_refresh'");
-    target.swipe_refresh = finder.castView(view, 2131492964, "field 'swipe_refresh'");
+    view = finder.findRequiredView(source, 2131492972, "field 'now_rv'");
+    target.now_rv = finder.castView(view, 2131492972, "field 'now_rv'");
+    view = finder.findRequiredView(source, 2131492971, "field 'swipe_refresh'");
+    target.swipe_refresh = finder.castView(view, 2131492971, "field 'swipe_refresh'");
   }
 
   @Override public void unbind(T target) {

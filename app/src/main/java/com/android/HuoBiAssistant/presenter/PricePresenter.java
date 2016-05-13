@@ -3,8 +3,10 @@ package com.android.HuoBiAssistant.presenter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.view.View;
 import android.widget.Toast;
 
+import com.android.HuoBiAssistant.R;
 import com.android.HuoBiAssistant.common.BaseUtils;
 import com.android.HuoBiAssistant.common.HuobiApp;
 import com.android.HuoBiAssistant.config.Constants;
@@ -14,7 +16,6 @@ import com.android.HuoBiAssistant.model.IPrice;
 import com.android.HuoBiAssistant.model.bean.BTCBean;
 import com.android.HuoBiAssistant.model.bean.EntrustDetail;
 import com.android.HuoBiAssistant.model.bean.EntrustRes;
-import com.android.HuoBiAssistant.model.callback.HttpCallbackListener;
 import com.android.HuoBiAssistant.model.dbmodel.EntrustDB;
 import com.android.HuoBiAssistant.model.imp.EntrustDetailModel;
 import com.android.HuoBiAssistant.model.imp.EntrustModel;
@@ -40,6 +41,12 @@ public class PricePresenter {
     private static final boolean RequestPriceLog = false;
     private static final boolean MarketBuyLog = false;
     private static double now_price = 0;
+    public int TYPE = TYPE_PRICE;
+    public static final int TYPE_PRICE = 2000;//价格
+    public static final int TYPE_VOL = 2003;//数量
+    public static final int TYPE_STOP_EARNING = 2001;//止盈
+    public static final int TYPE_STOP_LOSS = 2002;//止损
+    public static final int TYPE_BUY_PRICE = 2004;//止损
 
     private Handler handler = new Handler();
 
@@ -209,19 +216,20 @@ public class PricePresenter {
      * @param strArr 这个界面来了需要修改
      */
 
-    public void markPriceBuy(final String strArr[]){
+    public void markPriceBuy(){
         LogUtils.d("----------------------开始市价买入-------------------------", MarketBuyLog);
-        double amount = Double.parseDouble(strArr[3])/now_price;
+        //double amount = Double.parseDouble(strArr[3])/now_price;
+        double amount = Double.parseDouble(iBuyFragmentView.get_buy_price())/now_price;
        if(HuobiUtils.DealDouble(amount,4)<0.001){
            Toast.makeText(mContext,"必须购买超过0.001个比特币才能提供止盈止损服务",Toast.LENGTH_SHORT).show();
        }else {
 
-           entrustModel.marketPriceBuy(strArr[3], new Callback<EntrustRes>() {
+           entrustModel.marketPriceBuy(iBuyFragmentView.get_buy_price(), new Callback<EntrustRes>() {
                @Override
                public void success(final EntrustRes marketPriceBuy, Response response) {
                    LogUtils.d("买入成功,正在计算购买的数量", MarketBuyLog);
                    if (Constants.RES_SUCCESS.equals(marketPriceBuy.getResult())) {
-                       saveEntrust(marketPriceBuy, EntrustDB.TYPE_MARKET, strArr, EntrustDB.STATUS_WAIT_SELL);
+                       saveEntrust(marketPriceBuy, EntrustDB.TYPE_MARKET, EntrustDB.STATUS_WAIT_SELL);
                    }
                }
 
@@ -242,18 +250,18 @@ public class PricePresenter {
      * @param strArr     价格string
      * @param status     保存的状态，等待买入还是等待卖出
      */
-    private void saveEntrust(EntrustRes entrustRes, int type, String[] strArr, int status) {
+    private void saveEntrust(EntrustRes entrustRes, int type, int status) {
         final EntrustDB entrustDB = new EntrustDB();
 
         entrustDB.setEntrustId(Long.parseLong(entrustRes.getId()));
         entrustDB.setSubmit_time(BaseUtils.getCurentTime()); // 设置一下本地提交委托时间
         entrustDB.setType(type); // 市价或者限价交易
         // 设置委托的止盈止损价
-        entrustDB.setWin_price(Double.parseDouble(strArr[1])); // 设置止盈价
-        entrustDB.setLoss_price(Double.parseDouble(strArr[2])); // 设置止损价
+        entrustDB.setWin_price(Double.parseDouble(iBuyFragmentView.get_stop_earning())); // 设置止盈价
+        entrustDB.setLoss_price(Double.parseDouble(iBuyFragmentView.get_stop_loss())); // 设置止损价
         // 设置委托的当前状态
         entrustDB.setStatus(status);
-    //    entrustDB.setEntrust_amount(Double.parseDouble(strArr[3]));
+        entrustDB.setEntrust_amount(Double.parseDouble(iBuyFragmentView.get_buy_price()));
         entrustDB.setSuccessType(EntrustDB.SUCCESS_TYPE_NOT_COMPLETE);
         HuobiApp.currentEntrusts.add(entrustDB);
         // 保存到数据库
@@ -263,8 +271,7 @@ public class PricePresenter {
             // 2秒后获取详情，得出成交均价（为什么要延迟获取，因为不是下单后马上就能获取到的）
             handler.postDelayed(new GetDetailRunnable(entrustDB, Long.parseLong(entrustRes.getId())), 2000);
         }
-        // 显示所有当前委托
-        showAllEndrust();
+
     }
 
 
@@ -294,7 +301,7 @@ public class PricePresenter {
                         entrustDB.setEntrust_amount(amount);
                         entrustDB.update(entrustDB.getBaseObjId());
                         // 再次刷新一下
-                        showAllEndrust();
+
                         handler.removeCallbacks(GetDetailRunnable.this);
                     } else { // 未成交，则2秒后继续获取，不能放弃
                         handler.postDelayed(GetDetailRunnable.this, 2000);
@@ -308,9 +315,174 @@ public class PricePresenter {
             });
         }
     }
+    public void bt_market() {
+        iBuyFragmentView.show_ll_market(View.VISIBLE);
+        iBuyFragmentView.show_ll_limit(View.GONE);
+        iBuyFragmentView.market_back(R.drawable.btn_click);
+        iBuyFragmentView.limit_back(R.drawable.btn_not_click);
+    }
 
+    public void bt_limit() {
+        iBuyFragmentView.show_ll_market(View.GONE);
+        iBuyFragmentView.show_ll_limit(View.VISIBLE);
+        iBuyFragmentView.market_back(R.drawable.btn_not_click);
+        iBuyFragmentView.limit_back(R.drawable.btn_click);
+    }
 
-    public void showAllEndrust(){
-        iBuyFragmentView.showEndrustAll();
+    public void bt_clear() {
+        clear();
+    }
+
+    private void clear() {
+        switch (TYPE) {
+            case TYPE_PRICE:
+                iBuyFragmentView.et_price("");
+                break;
+            case TYPE_STOP_EARNING:
+                iBuyFragmentView.et_stop_earning("");
+                break;
+            case TYPE_STOP_LOSS:
+                iBuyFragmentView.et_stop_loss("");
+                break;
+            case TYPE_VOL:
+                iBuyFragmentView.et_vol("");
+                break;
+            case TYPE_BUY_PRICE:
+                iBuyFragmentView.et_buy_price("");
+                break;
+
+        }
+    }
+
+    public void bt_one() {
+        add(1);
+    }
+
+    private void add(int s) {
+        switch (TYPE) {
+            case TYPE_PRICE:
+                if (!(iBuyFragmentView.get_price().length() == 0 && s == 0))
+                    iBuyFragmentView.et_price(iBuyFragmentView.get_price()+s);
+                break;
+            case TYPE_STOP_EARNING:
+                if (!(iBuyFragmentView.get_stop_earning().length() == 0 && s == 0))
+                    iBuyFragmentView.et_stop_earning(iBuyFragmentView.get_stop_earning()+s);
+                break;
+            case TYPE_STOP_LOSS:
+                if (!(iBuyFragmentView.get_stop_loss().length() == 0 && s == 0))
+                    iBuyFragmentView.et_stop_loss(iBuyFragmentView.get_stop_loss()+s);
+                break;
+            case TYPE_VOL:
+                if (!(iBuyFragmentView.get_vol().length() == 0 && s == 0))
+                    iBuyFragmentView.et_vol(iBuyFragmentView.get_vol()+s);
+                break;
+            case TYPE_BUY_PRICE:
+                if(!(iBuyFragmentView.get_buy_price().length()==0 && s==0))
+                    iBuyFragmentView.et_buy_price(iBuyFragmentView.get_buy_price()+s);
+                break;
+        }
+    }
+
+    public void bt_zero() {
+        add(0);
+    }
+
+    public void bt_two() {
+        add(2);
+    }
+
+    public void bt_three() {
+        add(3);
+    }
+
+    public void bt_four() {
+        add(4);
+    }
+
+    public void bt_five() {
+        add(5);
+    }
+
+    public void bt_six() {
+        add(6);
+    }
+
+    public void bt_seven() {
+        add(7);
+    }
+
+    public void bt_eight() {
+        add(8);
+    }
+
+    public void bt_nine() {
+        add(9);
+    }
+
+    public void bt_vol() {
+
+    }
+
+    public void et_stop_loss() {
+        iBuyFragmentView.stop_loss_focus(R.drawable.show_data);
+        iBuyFragmentView.stop_earning_focus(R.drawable.not_show_data);
+        iBuyFragmentView.vol_focus(R.drawable.btn_not_click);
+        iBuyFragmentView.price_focus(R.drawable.not_show_data);
+        iBuyFragmentView.buy_price_focus(R.drawable.not_show_data);
+        TYPE = TYPE_STOP_LOSS;
+    }
+
+    public void et_vol() {
+        iBuyFragmentView.stop_loss_focus(R.drawable.not_show_data);
+        iBuyFragmentView.stop_earning_focus(R.drawable.not_show_data);
+        iBuyFragmentView.vol_focus(R.drawable.show_data);
+        iBuyFragmentView.price_focus(R.drawable.not_show_data);
+        TYPE = TYPE_VOL;
+    }
+    public void et_buy_price() {
+        iBuyFragmentView.stop_loss_focus(R.drawable.not_show_data);
+        iBuyFragmentView.stop_earning_focus(R.drawable.not_show_data);
+        iBuyFragmentView.buy_price_focus(R.drawable.show_data);
+
+        TYPE = TYPE_BUY_PRICE;
+    }
+
+    public void et_stop_earning() {
+        iBuyFragmentView.stop_loss_focus(R.drawable.not_show_data);
+        iBuyFragmentView.stop_earning_focus(R.drawable.show_data);
+        iBuyFragmentView.vol_focus(R.drawable.btn_not_click);
+        iBuyFragmentView.price_focus(R.drawable.not_show_data);
+        iBuyFragmentView.buy_price_focus(R.drawable.not_show_data);
+        TYPE = TYPE_STOP_EARNING;
+    }
+
+    public void et_price() {
+        iBuyFragmentView.stop_loss_focus(R.drawable.not_show_data);
+        iBuyFragmentView.stop_earning_focus(R.drawable.not_show_data);
+        iBuyFragmentView.vol_focus(R.drawable.btn_not_click);
+        iBuyFragmentView.price_focus(R.drawable.show_data);
+        TYPE = TYPE_PRICE;
+    }
+
+    public void bt_delete() {
+        switch (TYPE) {
+            case TYPE_PRICE:
+                if (iBuyFragmentView.get_price().length() != 0)
+                    iBuyFragmentView.et_price(iBuyFragmentView.get_price().substring(0, iBuyFragmentView.get_price().length() - 1));
+                break;
+            case TYPE_STOP_EARNING:
+                if (iBuyFragmentView.get_stop_earning().length() != 0)
+                    iBuyFragmentView.et_stop_earning(iBuyFragmentView.get_stop_earning().substring(0, iBuyFragmentView.get_stop_earning().length() - 1));
+                break;
+            case TYPE_STOP_LOSS:
+                if (iBuyFragmentView.get_stop_loss().length() != 0)
+                    iBuyFragmentView.et_stop_loss(iBuyFragmentView.get_stop_loss().substring(0, iBuyFragmentView.get_stop_loss().length() - 1));
+                break;
+            case TYPE_VOL:
+                if (iBuyFragmentView.get_vol().length() != 0)
+                    iBuyFragmentView.et_vol(iBuyFragmentView.get_vol().substring(0, iBuyFragmentView.get_vol().length() - 1));
+                break;
+        }
+
     }
 }

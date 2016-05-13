@@ -30,13 +30,8 @@ import com.android.HuoBiAssistant.ui.adapter.LeftSlideAdapter;
 import com.android.HuoBiAssistant.ui.fragment.BuyFragment;
 import com.android.HuoBiAssistant.ui.fragment.HistoryFragment;
 import com.android.HuoBiAssistant.ui.fragment.NowFragment;
-import com.android.HuoBiAssistant.ui.fragment.SaleFragment;
 import com.android.HuoBiAssistant.ui.view.IMainActivityView;
-import com.android.HuoBiAssistant.util.HuobiUtils;
-import com.android.HuoBiAssistant.util.LogUtils;
 import com.android.HuoBiAssistant.widget.CircleImageView;
-
-import java.math.BigDecimal;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -181,16 +176,22 @@ public class MainActivity extends BaseActivity implements IMainActivityView, Vie
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+
+
+         return true;
+
+
+
+//        if (mDrawerToggle.onOptionsItemSelected(item)) {
+//            return true;
+//        }
+
     }
 
 
@@ -206,7 +207,7 @@ public class MainActivity extends BaseActivity implements IMainActivityView, Vie
                 buy_text.setTextColor(MainActivity.this.getResources().getColor(R.color.primary_color));
                 if (buyFragment == null) {
                     buyFragment = new BuyFragment();
-                    transaction.add(R.id.content, buyFragment);
+                    transaction.add(R.id.content,buyFragment);
                 } else {
                     transaction.show(buyFragment);
                 }

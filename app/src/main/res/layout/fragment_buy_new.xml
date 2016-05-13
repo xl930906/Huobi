@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="com.xhy.buttontest.MainActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:gravity="center"
+    android:layout_gravity="center_horizontal">
+<ImageView
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:src="@mipmap/arrows_read"
+    android:id="@+id/iv_arrows"
+   />
+    <TextView
+        android:id="@+id/show_time_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="666"
+        android:textSize="18sp"/>
+
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt_limit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_click"
+                    android:text="限价"
+                    android:textColor="@color/colorGray" />
+
+                <Button
+                    android:id="@+id/bt_market"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_not_click"
+                    android:gravity="center"
+                    android:text="市价"
+                    android:textColor="@color/colorGray" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/limit_layout" />
+                <include layout="@layout/market_layout" />
+            </FrameLayout>
+
+
+            <EditText
+                android:id="@+id/et_stop_earning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/not_show_data"
+                android:cursorVisible="false"
+                android:hint="止盈($)"
+                android:textColorHint="@color/colorGray"
+                android:textCursorDrawable="@color/colorOrange" />
+
+            <EditText
+                android:id="@+id/et_stop_loss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/not_show_data"
+                android:cursorVisible="false"
+                android:hint="止损(฿)"
+                android:textColorHint="@color/colorGray"
+                android:textCursorDrawable="@color/colorOrange" />
+
+            <Button
+                android:id="@+id/bt_buy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorGray"
+                android:text="买入"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <include layout="@layout/keyboard"/>
+
+    </LinearLayout>
+</LinearLayout>

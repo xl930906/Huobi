@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_limit"
+    >
+
+    <EditText
+        android:id="@+id/et_price"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="价格($)"
+        android:textCursorDrawable="@color/colorOrange"
+        android:layout_marginBottom="20dp"
+        android:textColorHint="@color/colorGray"
+        android:background="@drawable/show_data"
+        />
+    <EditText
+        android:id="@+id/et_vol"
+        android:cursorVisible="false"
+        android:textCursorDrawable="@color/colorOrange"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="数量(฿)"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="@color/colorGray"
+        android:background="@drawable/not_show_data"
+        />
+    <TextView
+        android:id="@+id/tv_limit_amt"
+        android:cursorVisible="false"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="交易额(￥)"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="@color/colorGray"
+        android:background="@null"
+        />
+
+</LinearLayout>

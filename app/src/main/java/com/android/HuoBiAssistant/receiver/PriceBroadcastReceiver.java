@@ -22,15 +22,17 @@ public class PriceBroadcastReceiver extends BroadcastReceiver {
 
     public interface PriceListener {
         public void onPriceChange(BTCBean btcBean);
+
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         if (Constants.ACTION_PRICE.equals(intent.getAction())) {
             BTCBean btcBean = (BTCBean) intent.getSerializableExtra("price");
-            if (listener != null) {
+
                 listener.onPriceChange(btcBean);
+
             }
         }
     }
-}
+

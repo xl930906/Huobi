@@ -4,6 +4,10 @@
         "source": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\src\\main\\res\\mipmap-hdpi\\ic_history_select.png"
     },
     {
+        "merged": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\arrows_read.png",
+        "source": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\src\\main\\res\\mipmap-hdpi\\arrows_read.png"
+    },
+    {
         "merged": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
         "source": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
@@ -18,6 +22,10 @@
     {
         "merged": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_buy_select.png",
         "source": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\src\\main\\res\\mipmap-hdpi\\ic_buy_select.png"
+    },
+    {
+        "merged": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\arrows_green.png",
+        "source": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\src\\main\\res\\mipmap-hdpi\\arrows_green.png"
     },
     {
         "merged": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_now_select.png",
@@ -66,5 +74,9 @@
     {
         "merged": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_account.png",
         "source": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\src\\main\\res\\mipmap-hdpi\\ic_account.png"
+    },
+    {
+        "merged": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\arrow_green2.png",
+        "source": "D:\\Users\\xianling\\AndroidStudioProjects\\HuoBiAssistant\\HuoBiAssistant\\app\\src\\main\\res\\mipmap-hdpi\\arrow_green2.png"
     }
 ]

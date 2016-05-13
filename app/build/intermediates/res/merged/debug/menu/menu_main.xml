@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item android:id="@+id/action_refresh"
-        android:title="@string/update"
+        android:title="开启服务"
+        android:orderInCategory="80"
+        app:showAsAction="never"/>
+    <item android:id="@+id/action_refresh2"
+        android:title="关闭服务"
         android:orderInCategory="80"
         app:showAsAction="never"/>
         </menu>

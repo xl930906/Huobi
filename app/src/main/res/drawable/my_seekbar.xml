@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@android:id/background"
+        android:drawable="@drawable/seek_down" /><!--最下层图片-->
+
+    <item
+        android:id="@android:id/progress"
+        android:drawable="@drawable/seek_up" /><!--显示当前进度的图片-->
+</layer-list>
